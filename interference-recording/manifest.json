@@ -4,7 +4,7 @@
     "name": "interference-recording",
     "displayName": "Interference Recording",
     "description": "interference recording",
-    "url": "https://github.com/JaninaKyas/Ucrm-Plugin-Test/edit/main/interference-recording",
+    "url": "https://github.com/Ubiquiti-App/UCRM-plugins/",
     "version": "1.1.0",
     "ucrmVersionCompliancy": {
       "min": "2.14.0-beta4",
