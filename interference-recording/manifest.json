@@ -1,10 +1,10 @@
 {
   "version": "1.1",
   "information": {
-    "name": "interference-recording",
-    "displayName": "Interference Recording",
-    "description": "interference recording",
-    "url": "https://github.com/Ubiquiti-App/UCRM-plugins/",
+    "name": "plugin-template",
+    "displayName": "Plugin template",
+    "description": "This is a template you can use to build your own plugin.",
+    "url": "https://github.com/Ubiquiti-App/UCRM-plugins",
     "version": "1.1.0",
     "ucrmVersionCompliancy": {
       "min": "2.14.0-beta4",
