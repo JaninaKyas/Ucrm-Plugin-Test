@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 24. Apr 2024 um 16:53
+-- Erstellungszeit: 26. Apr 2024 um 17:14
 -- Server-Version: 5.7.33-0ubuntu0.16.04.1
 -- PHP-Version: 7.3.27
 
