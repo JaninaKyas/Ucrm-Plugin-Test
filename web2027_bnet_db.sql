@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 26. Apr 2024 um 17:14
+-- Erstellungszeit: 30. Apr 2024 um 16:09
 -- Server-Version: 5.7.33-0ubuntu0.16.04.1
 -- PHP-Version: 7.3.27
 
@@ -93,6 +93,7 @@ CREATE TABLE `asb_availability` (
   `kvz` char(10) NOT NULL DEFAULT '',
   `onkz` char(10) NOT NULL DEFAULT '',
   `asb` int(11) NOT NULL DEFAULT '0',
+  `isExpansionFinish` tinyint(1) NOT NULL DEFAULT '1',
   `createDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `createUser` char(50) NOT NULL DEFAULT '',
   `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -104,14 +105,14 @@ CREATE TABLE `asb_availability` (
 -- Daten für Tabelle `asb_availability`
 --
 
-INSERT INTO `asb_availability` (`id`, `address_id`, `network_node_adress_id`, `technology_id`, `down_stream`, `up_stream`, `kvz`, `onkz`, `asb`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
-(2, 1, 2, 2, '1000.00', '20.00', '2', '030', 2, '2024-04-08 12:21:28', 'JANINA', '2024-04-08 12:21:28', 'JANINA', 0),
-(4, 1, 3, 3, '80.00', '20.00', '2', '030', 2, '2024-04-08 12:21:56', 'JANINA', '2024-04-08 12:21:56', 'JANINA', 0),
-(5, 1, 3, 5, '80.00', '20.00', '2', '030', 2, '2024-04-08 12:22:04', 'JANINA', '2024-04-08 12:22:04', 'JANINA', 0),
-(6, 2, 3, 5, '80.00', '20.00', '2', '030', 2, '2024-04-08 12:22:14', 'JANINA', '2024-04-08 12:22:14', 'JANINA', 0),
-(7, 2, 3, 3, '80.00', '20.00', '2', '030', 2, '2024-04-08 12:22:23', 'JANINA', '2024-04-08 12:22:23', 'JANINA', 0),
-(8, 4, 2, 3, '40.00', '10.00', '5', '034602', 5, '2024-04-22 09:24:11', 'JANINA', '2024-04-22 09:24:11', 'JANINA', 0),
-(9, 5, 4, 2, '200.00', '25.00', '1', '0123456789', 2, '2024-04-24 16:17:44', 'JANINA', '2024-04-24 16:17:44', 'JANINA', 0);
+INSERT INTO `asb_availability` (`id`, `address_id`, `network_node_adress_id`, `technology_id`, `down_stream`, `up_stream`, `kvz`, `onkz`, `asb`, `isExpansionFinish`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
+(2, 1, 2, 2, '1000.00', '20.00', '2', '030', 2, 1, '2024-04-08 12:21:28', 'JANINA', '2024-04-08 12:21:28', 'JANINA', 0),
+(4, 1, 3, 3, '80.00', '20.00', '2', '030', 2, 1, '2024-04-08 12:21:56', 'JANINA', '2024-04-08 12:21:56', 'JANINA', 0),
+(5, 1, 3, 5, '80.00', '20.00', '2', '030', 2, 1, '2024-04-08 12:22:04', 'JANINA', '2024-04-08 12:22:04', 'JANINA', 0),
+(6, 2, 3, 5, '80.00', '20.00', '2', '030', 2, 1, '2024-04-08 12:22:14', 'JANINA', '2024-04-08 12:22:14', 'JANINA', 0),
+(7, 2, 3, 3, '80.00', '20.00', '2', '030', 2, 1, '2024-04-08 12:22:23', 'JANINA', '2024-04-08 12:22:23', 'JANINA', 0),
+(8, 4, 2, 3, '40.00', '10.00', '5', '034602', 5, 1, '2024-04-22 09:24:11', 'JANINA', '2024-04-22 09:24:11', 'JANINA', 0),
+(9, 5, 4, 2, '200.00', '25.00', '1', '0123456789', 2, 1, '2024-04-24 16:17:44', 'JANINA', '2024-04-24 16:17:44', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
@@ -971,6 +972,7 @@ CREATE TABLE `numerically` (
   `id` int(11) UNSIGNED NOT NULL,
   `parent_id` int(11) UNSIGNED NOT NULL DEFAULT '1',
   `name` char(200) NOT NULL DEFAULT '',
+  `price` decimal(10,2) DEFAULT '0.00',
   `createDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `createUser` char(50) NOT NULL DEFAULT '',
   `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -982,16 +984,16 @@ CREATE TABLE `numerically` (
 -- Daten für Tabelle `numerically`
 --
 
-INSERT INTO `numerically` (`id`, `parent_id`, `name`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
-(1, 1, '... bitte auswählen ...', '2024-04-08 09:10:41', 'JANINA', '2024-04-08 09:10:41', 'JANINA', 1),
-(2, 1, 'Rechnung monatlich', '2024-04-08 09:10:41', 'JANINA', '2024-04-08 09:10:41', 'JANINA', 1),
-(3, 1, 'Rechnung per Post +1,50 € pro Monat', '2024-04-08 09:10:41', 'JANINA', '2024-04-08 09:10:41', 'JANINA', 0),
-(4, 1, 'Einzugsermächtigung für Lastschriftverfahren', '2024-04-08 09:10:41', 'JANINA', '2024-04-08 09:10:41', 'JANINA', 0),
-(5, 1, 'Rechnung monatlich im voraus', '2024-04-08 09:10:41', 'JANINA', '2024-04-08 09:10:41', 'JANINA', 1),
-(6, 1, 'einmalig nach Fertigstellung Hausanschluss', '2024-04-08 09:10:41', 'JANINA', '2024-04-08 09:10:41', 'JANINA', 0),
-(7, 1, 'Ratenzahlung nach Vereinbarung', '2024-04-08 09:10:41', 'JANINA', '2024-04-08 09:10:41', 'JANINA', 0),
-(8, 7, '12 Monatsraten', '2024-04-24 09:53:24', 'JANINA', '2024-04-24 09:53:24', 'JANINA', 0),
-(9, 7, '24 Monatsraten', '2024-04-24 09:53:24', 'JANINA', '2024-04-24 09:53:24', 'JANINA', 0);
+INSERT INTO `numerically` (`id`, `parent_id`, `name`, `price`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
+(1, 1, '... bitte auswählen ...', '0.00', '2024-04-08 09:10:41', 'JANINA', '2024-04-08 09:10:41', 'JANINA', 1),
+(2, 1, 'Rechnung monatlich', '0.00', '2024-04-08 09:10:41', 'JANINA', '2024-04-08 09:10:41', 'JANINA', 1),
+(3, 1, 'Rechnung per Post', '1.50', '2024-04-08 09:10:41', 'JANINA', '2024-04-08 09:10:41', 'JANINA', 0),
+(4, 1, 'Einzugsermächtigung für Lastschriftverfahren', '0.00', '2024-04-08 09:10:41', 'JANINA', '2024-04-08 09:10:41', 'JANINA', 0),
+(5, 1, 'Rechnung monatlich im voraus', '0.00', '2024-04-08 09:10:41', 'JANINA', '2024-04-08 09:10:41', 'JANINA', 1),
+(6, 1, 'einmalig nach Fertigstellung Hausanschluss', '0.00', '2024-04-08 09:10:41', 'JANINA', '2024-04-08 09:10:41', 'JANINA', 0),
+(7, 1, 'Ratenzahlung nach Vereinbarung', '0.00', '2024-04-08 09:10:41', 'JANINA', '2024-04-08 09:10:41', 'JANINA', 0),
+(8, 7, '12 Monatsraten', '0.00', '2024-04-24 09:53:24', 'JANINA', '2024-04-24 09:53:24', 'JANINA', 0),
+(9, 7, '24 Monatsraten', '0.00', '2024-04-24 09:53:24', 'JANINA', '2024-04-24 09:53:24', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
