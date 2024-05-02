@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 30. Apr 2024 um 16:09
+-- Erstellungszeit: 02. Mai 2024 um 15:15
 -- Server-Version: 5.7.33-0ubuntu0.16.04.1
 -- PHP-Version: 7.3.27
 
@@ -688,6 +688,8 @@ CREATE TABLE `customer` (
   `tech_address_id` int(11) UNSIGNED NOT NULL,
   `legal_form_id` int(11) UNSIGNED NOT NULL,
   `customerNr` char(100) NOT NULL DEFAULT '',
+  `salut` char(10) NOT NULL DEFAULT '''''',
+  `title` char(10) NOT NULL DEFAULT '''''',
   `fName` char(100) NOT NULL DEFAULT '',
   `lName` char(100) NOT NULL DEFAULT '',
   `company` char(100) NOT NULL DEFAULT '',
@@ -731,6 +733,86 @@ INSERT INTO `customer_class` (`id`, `name`, `shortName`, `createDate`, `createUs
 (3, 'Senioren', 'S-PK', '2024-04-18 11:31:39', 'JANINA', '2024-04-18 11:31:39', 'JANINA', 0),
 (4, 'Geschäftskunden', 'GK', '2024-04-18 11:31:39', 'JANINA', '2024-04-18 11:31:39', 'JANINA', 0),
 (5, 'Business Complete', 'BC-GK', '2024-04-18 11:31:39', 'JANINA', '2024-04-18 11:31:39', 'JANINA', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `customer_connection_requests`
+--
+
+CREATE TABLE `customer_connection_requests` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `salutation` char(150) NOT NULL DEFAULT '',
+  `fName` char(150) NOT NULL DEFAULT '',
+  `lName` char(150) NOT NULL DEFAULT '',
+  `company` char(150) NOT NULL DEFAULT '',
+  `street` char(150) NOT NULL DEFAULT '',
+  `hNr` char(150) NOT NULL DEFAULT '',
+  `zipcode` char(150) NOT NULL DEFAULT '',
+  `place` char(150) NOT NULL DEFAULT '',
+  `district` char(150) NOT NULL DEFAULT '',
+  `phone` char(150) NOT NULL DEFAULT '',
+  `mobil` char(150) NOT NULL DEFAULT '',
+  `mail` char(150) NOT NULL DEFAULT '',
+  `conKind` tinyint(3) NOT NULL DEFAULT '0',
+  `selTech` tinyint(3) NOT NULL DEFAULT '0',
+  `isWishRecall` tinyint(1) NOT NULL DEFAULT '0',
+  `recallTermin` char(150) NOT NULL DEFAULT '',
+  `rate` tinyint(3) NOT NULL DEFAULT '2',
+  `careTech` tinyint(3) NOT NULL DEFAULT '0',
+  `isPhone` tinyint(1) NOT NULL DEFAULT '0',
+  `isPorting` tinyint(1) NOT NULL DEFAULT '0',
+  `careTermin` char(150) NOT NULL DEFAULT '',
+  `message` char(250) NOT NULL DEFAULT '',
+  `isConfirmSafeData` tinyint(1) NOT NULL DEFAULT '1',
+  `createDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createUser` char(50) NOT NULL DEFAULT '',
+  `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateUser` char(50) NOT NULL DEFAULT '',
+  `isDeleted` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `customer_connection_requests`
+--
+
+INSERT INTO `customer_connection_requests` (`id`, `salutation`, `fName`, `lName`, `company`, `street`, `hNr`, `zipcode`, `place`, `district`, `phone`, `mobil`, `mail`, `conKind`, `selTech`, `isWishRecall`, `recallTermin`, `rate`, `careTech`, `isPhone`, `isPorting`, `careTermin`, `message`, `isConfirmSafeData`, `createDate`, `createUser`, `updateDate`, `updateUser`, `isDeleted`) VALUES
+(6, 'Herr', 's', 's', 'Hr. Kuhne - Hartmann Brehna GmbH', 'muster', '1g', '00000', 'Brehna', '', '073137842324', '45667', 'janinakyas@web.de', 2, 3, 0, '', 2, 9, 0, 0, '', 'test', 1, '2024-05-02 07:44:17', 'JANINA', '2024-05-02 07:44:17', 'JANINA', 1),
+(7, 'Herr', 's', 's', 'Hr. Kuhne - Hartmann Brehna GmbH', 'muster', '1g', '00000', 'Brehna', '', '073137842324', '45667', 'janinakyas@web.de', 1, 2, 0, '', 2, -1, 0, 0, '', 'test', 1, '2024-05-02 07:46:09', 'JANINA', '2024-05-02 07:46:09', 'JANINA', 1),
+(8, 'Herr', 's', 's', 'Hr. Kuhne - Hartmann Brehna GmbH', 'muster', '1g', '00000', 'Brehna', '', '073137842324', '45667', 'janinakyas@web.de', 1, 3, 0, '', 2, 9, 1, 1, '2024-05-02', 'test', 1, '2024-05-02 10:13:33', 'JANINA', '2024-05-02 10:13:33', 'JANINA', 0),
+(9, 'Herr', 's', 's', 'Hr. Kuhne - Hartmann Brehna GmbH', 'muster', '1g', '00000', 'Brehna', '', '073137842324', '45667', 'janinakyas@web.de', 1, 3, 0, '', 2, 9, 1, 1, '2024-05-02', 'test', 1, '2024-05-02 10:16:06', 'JANINA', '2024-05-02 10:16:06', 'JANINA', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `customer_ftth_request`
+--
+
+CREATE TABLE `customer_ftth_request` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `customer_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `post_address_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `tech_address_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `debator_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `con_kind_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `selected_tech_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `rate_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `main_num_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `sub_num_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `kind_point_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `cnt_units` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `complete_date` char(50) NOT NULL DEFAULT '',
+  `intro_house_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `intro_else` char(150) NOT NULL DEFAULT '',
+  `house_owner_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `isAgbConfirm` tinyint(1) NOT NULL DEFAULT '0',
+  `isSafeDataConfirm` tinyint(1) NOT NULL DEFAULT '0',
+  `createDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createUser` char(50) NOT NULL DEFAULT '',
+  `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateUser` char(50) NOT NULL DEFAULT '',
+  `isDeleted` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -887,6 +969,34 @@ INSERT INTO `house_intro_types` (`id`, `name`, `createDate`, `createUser`, `upda
 (3, 'Neue Einführung notwendig', '2024-04-24 09:27:09', 'JANINA', '2024-04-24 09:27:09', 'JANINA', 0),
 (4, 'Mehrspartenhauseinführung vorhanden', '2024-04-24 09:27:09', 'JANINA', '2024-04-24 09:27:09', 'JANINA', 0),
 (5, 'Sonstiges', '2024-04-24 09:27:09', 'JANINA', '2024-04-24 09:27:09', 'JANINA', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `house_owner`
+--
+
+CREATE TABLE `house_owner` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `title` char(50) NOT NULL DEFAULT '',
+  `fName` char(50) NOT NULL DEFAULT '',
+  `lName` char(50) NOT NULL DEFAULT '',
+  `company` char(150) NOT NULL DEFAULT '',
+  `address_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `floor_address_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `hr_number` char(25) NOT NULL DEFAULT '''''',
+  `fFloor` char(150) NOT NULL DEFAULT '',
+  `fFloorKind` char(150) NOT NULL DEFAULT '',
+  `fDFloor` char(150) NOT NULL DEFAULT '',
+  `mail` char(150) NOT NULL DEFAULT '',
+  `mobil` char(150) NOT NULL DEFAULT '',
+  `phone` char(150) NOT NULL DEFAULT '',
+  `createDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createUser` char(50) NOT NULL DEFAULT '',
+  `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updateUser` char(50) NOT NULL DEFAULT '',
+  `isDeleted` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -1570,6 +1680,18 @@ ALTER TABLE `customer_class`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indizes für die Tabelle `customer_connection_requests`
+--
+ALTER TABLE `customer_connection_requests`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `customer_ftth_request`
+--
+ALTER TABLE `customer_ftth_request`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indizes für die Tabelle `customer_x_technology`
 --
 ALTER TABLE `customer_x_technology`
@@ -1607,6 +1729,12 @@ ALTER TABLE `hardware`
 -- Indizes für die Tabelle `house_intro_types`
 --
 ALTER TABLE `house_intro_types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `house_owner`
+--
+ALTER TABLE `house_owner`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1821,6 +1949,18 @@ ALTER TABLE `customer_class`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT für Tabelle `customer_connection_requests`
+--
+ALTER TABLE `customer_connection_requests`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT für Tabelle `customer_ftth_request`
+--
+ALTER TABLE `customer_ftth_request`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT für Tabelle `customer_x_technology`
 --
 ALTER TABLE `customer_x_technology`
@@ -1857,6 +1997,12 @@ ALTER TABLE `house_intro_types`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT für Tabelle `house_owner`
+--
+ALTER TABLE `house_owner`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT für Tabelle `legal_form`
 --
 ALTER TABLE `legal_form`
@@ -1866,7 +2012,7 @@ ALTER TABLE `legal_form`
 -- AUTO_INCREMENT für Tabelle `location`
 --
 ALTER TABLE `location`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT für Tabelle `numerically`
