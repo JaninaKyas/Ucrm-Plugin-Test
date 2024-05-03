@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 02. Mai 2024 um 15:15
+-- Erstellungszeit: 03. Mai 2024 um 14:33
 -- Server-Version: 5.7.33-0ubuntu0.16.04.1
 -- PHP-Version: 7.3.27
 
@@ -248,6 +248,8 @@ CREATE TABLE `contact_person` (
 CREATE TABLE `contract` (
   `id` int(11) UNSIGNED NOT NULL,
   `customer_id` int(11) UNSIGNED NOT NULL,
+  `post_address_id` int(11) UNSIGNED NOT NULL,
+  `technology_address_id` int(11) UNSIGNED NOT NULL,
   `contract_type_id` int(11) UNSIGNED NOT NULL,
   `tariff_id` int(11) UNSIGNED NOT NULL,
   `hardware_id` int(11) UNSIGNED NOT NULL,
@@ -267,6 +269,8 @@ CREATE TABLE `contract` (
   `isConfirmedDataProcess` tinyint(1) NOT NULL DEFAULT '0',
   `isConfirmedAgb` tinyint(1) NOT NULL DEFAULT '0',
   `isConfirmedDataProtection` tinyint(1) NOT NULL DEFAULT '0',
+  `con_tae` char(50) NOT NULL DEFAULT '''''',
+  `tae` char(50) NOT NULL DEFAULT '''''',
   `createDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `createUser` char(50) NOT NULL DEFAULT '',
   `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -780,7 +784,8 @@ INSERT INTO `customer_connection_requests` (`id`, `salutation`, `fName`, `lName`
 (6, 'Herr', 's', 's', 'Hr. Kuhne - Hartmann Brehna GmbH', 'muster', '1g', '00000', 'Brehna', '', '073137842324', '45667', 'janinakyas@web.de', 2, 3, 0, '', 2, 9, 0, 0, '', 'test', 1, '2024-05-02 07:44:17', 'JANINA', '2024-05-02 07:44:17', 'JANINA', 1),
 (7, 'Herr', 's', 's', 'Hr. Kuhne - Hartmann Brehna GmbH', 'muster', '1g', '00000', 'Brehna', '', '073137842324', '45667', 'janinakyas@web.de', 1, 2, 0, '', 2, -1, 0, 0, '', 'test', 1, '2024-05-02 07:46:09', 'JANINA', '2024-05-02 07:46:09', 'JANINA', 1),
 (8, 'Herr', 's', 's', 'Hr. Kuhne - Hartmann Brehna GmbH', 'muster', '1g', '00000', 'Brehna', '', '073137842324', '45667', 'janinakyas@web.de', 1, 3, 0, '', 2, 9, 1, 1, '2024-05-02', 'test', 1, '2024-05-02 10:13:33', 'JANINA', '2024-05-02 10:13:33', 'JANINA', 0),
-(9, 'Herr', 's', 's', 'Hr. Kuhne - Hartmann Brehna GmbH', 'muster', '1g', '00000', 'Brehna', '', '073137842324', '45667', 'janinakyas@web.de', 1, 3, 0, '', 2, 9, 1, 1, '2024-05-02', 'test', 1, '2024-05-02 10:16:06', 'JANINA', '2024-05-02 10:16:06', 'JANINA', 0);
+(9, 'Herr', 's', 's', 'Hr. Kuhne - Hartmann Brehna GmbH', 'muster', '1g', '00000', 'Brehna', '', '073137842324', '45667', 'janinakyas@web.de', 1, 3, 0, '', 2, 9, 1, 1, '2024-05-02', 'test', 1, '2024-05-02 10:16:06', 'JANINA', '2024-05-02 10:16:06', 'JANINA', 0),
+(10, 'Herr', 's', 's', 'Hr. Kuhne - Hartmann Brehna GmbH', 'muster1', '35', '00000', 'Sandersdorf-Brehna', '', '073137842324', '45667', 'janinakyas@web.de', 2, 3, 0, '', 2, 11, 0, 0, '', 'test', 1, '2024-05-03 12:01:35', 'JANINA', '2024-05-03 12:01:35', 'JANINA', 0);
 
 -- --------------------------------------------------------
 
@@ -1952,7 +1957,7 @@ ALTER TABLE `customer_class`
 -- AUTO_INCREMENT für Tabelle `customer_connection_requests`
 --
 ALTER TABLE `customer_connection_requests`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT für Tabelle `customer_ftth_request`
